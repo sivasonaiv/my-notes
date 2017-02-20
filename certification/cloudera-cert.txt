@@ -1,0 +1,29 @@
+
+Data Ingest
+The skills to transfer data between external systems and your cluster. This includes the following:
+	
+	Import data from a MySQL database into HDFS using Sqoop
+	Export data to a MySQL database from HDFS using Sqoop
+	Change the delimiter and file format of data during import using Sqoop
+	Ingest real-time and near-real time (NRT) streaming data into HDFS using Flume
+	Load data into and out of HDFS using the Hadoop File System (FS) commands
+
+Transform, Stage, Store
+Convert a set of data values in a given format stored in HDFS into new data values and/or a new data format and write them into HDFS. This includes writing Spark applications in both Scala and Python (see note above on exam question format for more information on using either Scala or Python):
+
+	Load data from HDFS and store results back to HDFS using Spark
+	Join disparate datasets together using Spark
+	Calculate aggregate statistics (e.g., average or sum) using Spark
+	Filter data into a smaller dataset using Spark
+	Write a query that produces ranked or sorted data using Spark
+
+Data Analysis
+Use Data Definition Language (DDL) to create tables in the Hive metastore for use by Hive and Impala.
+
+	Read and/or create a table in the Hive metastore in a given schema
+	Extract an Avro schema from a set of datafiles using avro-tools
+	Create a table in the Hive metastore using the Avro file format and an external schema file
+	Improve query performance by creating partitioned tables in the Hive metastore
+	Evolve an Avro schema by changing JSON files
+
+
