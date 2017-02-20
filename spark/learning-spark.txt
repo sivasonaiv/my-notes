@@ -1,0 +1,45 @@
+Learning Spark - notes
+
+Spark
+General purpose framework for cluster computing
+
+Components
+
+- Spark Core
+	API that defines RDD
+    RDD- represents collection that distributes across many compute nodes that can be manipulated in parallel
+
+- Spark SQL
+	SQL interface to Spark
+
+- Spark Streaming
+- Spark MLlib
+- Spark GraphX
+	library to manipulate graphs and performing graph-parallel computations
+
+- Cluster managers
+
+Installation
+     Spark 2.1.0
+     Scala 2.11.8
+     Python 2.7.12
+
+RDD
+
+- An RDD in Spark is simply an immutable distributed collection of objects.
+- Each RDD is split into multiple partitions, which may be computed on different nodes of the cluster.
+- RDDs can contain any type of Python, Java, or Scala objects, including user- defined classes.
+- Users create RDDs in two ways: by loading an external dataset, or by distributing a collection of objects (e.g., a list or set) in their driver program (sc.parallelize())
+- Once created, RDDs offer two types of operations: transformations and actions. Transformations construct a new RDD from a previous one. [Transformations return RDDs, whereas actions return some other data type.]
+- loads data only when its used in actions
+- Spark’s RDDs are by default recomputed each time you run an action on them. If you would like to reuse an RDD in multiple actions, you can ask Spark to persist it using RDD.persist()
+
+To summarize, every Spark program and shell session will work as follows:
+
+- Create some input RDDs from external data.
+- Transform them to define new RDDs using transformations like filter().
+- Ask Spark to persist() any intermediate RDDs that will need to be reused.
+- Launch actions such as count() and first() to kick off a parallel computation, which is then optimized and executed by Spark.
+
+As RDDs are immutable, transformation every time creates new RDD and keep track of the dependencies between RDDs
+Spark keeps track of the set of dependencies between different RDDs, called the lineage graph.
