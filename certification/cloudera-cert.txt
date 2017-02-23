@@ -27,3 +27,25 @@ Use Data Definition Language (DDL) to create tables in the Hive metastore for us
 	Evolve an Avro schema by changing JSON files
 
 
+1. Read and reread the various sections of the required skill on the certification page.
+2. Be certain you can code analytical (aggregation, projection, filtering, sorting and joins) query using spark. Yes spark.
+3. You should concertrate on spark using python or/and scala. I had to rewrite all the python code to a scala equivalent because I have more confidence in my scala skills and didnt want to take chances.
+4. Your Hive skills should be sound. Very important for the exam and for life as a big data engineer. Learn how to create tables in various formats and delimiter.
+5. Sqoop is very very important. You should be able to navigate your way base on the requirements. I suggest using the sqoop help as the best guide in the exam.
+6. For this exam, templates are provided. Try writing your entire code from start if you have ANY confusion what the template do or how they do it. I did this myself. But you have to be fast about it. Time flies.
+7. Try increasing the fonts on the editor or terminal window. It could be really strenous looking at those remote screens.
+
+I had
+
+1 sqoop import
+1 sqoop export
+2 hive questions one create table and another create partitioned table
+1 avro schema evolution
+3 scala spark sorting, reduce by key
+2 pyspark
+
+IT Versity
+
+https://www.youtube.com/watch?v=62n0r3yetvc&list=PLf0swTFhTI8rJvGpOp-LujOcpk-Rlz-yE
+https://www.linkedin.com/pulse/why-what-how-cca-spark-hadoop-developer-exam-cca175-bombatkar?articleId=6225377304982450176#comments-6225377304982450176&trk=prof-post
+
