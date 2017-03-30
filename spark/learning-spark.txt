@@ -43,3 +43,56 @@ To summarize, every Spark program and shell session will work as follows:
 
 As RDDs are immutable, transformation every time creates new RDD and keep track of the dependencies between RDDs
 Spark keeps track of the set of dependencies between different RDDs, called the lineage graph.
+Transformation - Lazy Evaluation - added to the DAG structure without actually executing
+Action - Early Evaluation - executed immediately
+
+sc.parllalize() -> method used to convert given collection into RDD
+
+filter() - its transformation method that returns new RDD
+
+eg: val inputRDD = sc.textFile("log.txt")
+	val errorsRDD = inputRDD.filter(line => line.contains("error"))
+	val warningRDD = inputRDD.filter(line => line.contains("warning"))
+	val badlinesRDD = errorsRDD.union(warningsRDD)
+	
+union() -> takes two rdds and returns new RDD with contents of both (will contain duplicates)
+
+Spark keeps track of the set of dependencies between different RDDs - called the lineage graph
+
+count() -> it returns total no of elements in an RDD
+take() -> it returns given no of elements from an RDD
+
+collect() -> to get the entire RDD into Memory. shouldnt use for large dataset
+---
+passing functions to spark
+	target function that has to be operated on each element in the RDD can be passed as lambda argument
+	
+python example
+	
+def containsError(s):
+	return "error" in s
+word = rdd.filter(containsError)
+
+One issue to watch out for when passing functions is inadvertently serializing the object containing the function.
+---
+Common Transformations and actions used
+ 
+ map() and filter() are two transformation commonly used
+ 
+ map() - takes in a function and applies it to each element in RDD with the result of the function being
+ 		 the new value of each element in the resulting RDD.
+ 		 
+ filter() - takes in a function and returns RDD that only has elements that pass the filter() function
+ flatMap() - called individually for each element in RDD and returns an iterator with our return values
+ 
+ RDD.distinct() - to produce a new RDD with only distinct items
+ 
+ intersection() - returns only elements in both RDDs - also removes all duplicates
+ 
+
+	
+
+
+
+
+	
