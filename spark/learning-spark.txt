@@ -89,7 +89,32 @@ Common Transformations and actions used
  
  intersection() - returns only elements in both RDDs - also removes all duplicates
  
-
+ example:
+ 
+ RDD 1 - {coffee, coffee, panda, monkey, tea}
+ RDD 2 - {coffee, monkey, kitty}
+ 
+ RDD1.distinct() - {coffee, panda, monkey, tea }
+ RDD1.union(RDD2) - {coffee,coffee,coffee,panda,monkey,monkey,tea,kitty}
+ RDD1.intersection(RDD2) - {coffee,monkey}
+ RDD1.subtract(RDD2) - {panda,tea}
+ 
+ 
+ cartesian(other) -  transformation returns all possible pairs of (a, b) 
+ 					where a is in the source RDD and b is in the other RDD
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 	
 
 
