@@ -77,32 +77,39 @@ One issue to watch out for when passing functions is inadvertently serializing t
 ---
 Common Transformations and actions used
  
- map() and filter() are two transformation commonly used
+ Common Transformations
  
- map() - takes in a function and applies it to each element in RDD with the result of the function being
- 		 the new value of each element in the resulting RDD.
+ 	map() and filter() are two transformation commonly used
+ 
+ 	map() - takes in a function and applies it to each element in RDD with the result of the function being
+ 		 	the new value of each element in the resulting RDD.
  		 
- filter() - takes in a function and returns RDD that only has elements that pass the filter() function
- flatMap() - called individually for each element in RDD and returns an iterator with our return values
+ 	filter() - takes in a function and returns RDD that only has elements that pass the filter() function
+ 	flatMap() - called individually for each element in RDD and returns an iterator with our return values
  
- RDD.distinct() - to produce a new RDD with only distinct items
+ 	RDD.distinct() - to produce a new RDD with only distinct items
  
- intersection() - returns only elements in both RDDs - also removes all duplicates
+ 	intersection() - returns only elements in both RDDs - also removes all duplicates
  
- example:
+ 	example:
  
- RDD 1 - {coffee, coffee, panda, monkey, tea}
- RDD 2 - {coffee, monkey, kitty}
+ 		RDD 1 - {coffee, coffee, panda, monkey, tea}
+ 		RDD 2 - {coffee, monkey, kitty}
  
- RDD1.distinct() - {coffee, panda, monkey, tea }
- RDD1.union(RDD2) - {coffee,coffee,coffee,panda,monkey,monkey,tea,kitty}
- RDD1.intersection(RDD2) - {coffee,monkey}
- RDD1.subtract(RDD2) - {panda,tea}
+ 		RDD1.distinct() - {coffee, panda, monkey, tea }
+ 		RDD1.union(RDD2) - {coffee,coffee,coffee,panda,monkey,monkey,tea,kitty}
+ 		RDD1.intersection(RDD2) - {coffee,monkey}
+ 		RDD1.subtract(RDD2) - {panda,tea}
  
- 
- cartesian(other) -  transformation returns all possible pairs of (a, b) 
+ 		cartesian(other) -  transformation returns all possible pairs of (a, b) 
  					where a is in the source RDD and b is in the other RDD
  
+ Common Actions
+ 
+ 	reduce() - takes a function that operates on two elements of the type in your RDD
+ 				and returns a new element of the same type
+ 				
+ 	
  
  
  
