@@ -1,0 +1,53 @@
+Kafka
+
+A high-throughput distributed messaging system 
+Designed to move data at high volumes
+
+developed by Linkedin
+2011 - kafka open sourced in Apache
+
+next generation messaging goals
+	High throughput
+	Horizontally scalability
+	Reliable and durable
+	Loosely coupled producers and Consumers
+	Flexible publish-subscribe semantics
+
+Kafka Architecture
+	publish subscribe messaging system
+	
+			Broker
+Producers -> Topics -> Consumers	
+			 (identified by name)
+			 
+Broker - daemon and able to access the file system
+
+Cluster - grouping of multiple brokers
+
+Distributed Systems
+	collection of resources that are instructed to achieve a specific goal or function
+	consist of multiple worker nodes
+	system of nodes require coordination to ensure consistency and progress towards a common goal
+	each node communicates with each other through messages
+
+controller election 
+	- run the longest
+	- maintain
+			attendance of worker nodes
+			no of work items going to be executed
+			the status of work items
+For reliability
+		Task redundancy - assign same work to more than one node
+
+distributed systems communicates through consensus or gossip protocol
+	
+zookeeper
+	metadata server
+	Centralized service for maintaining metadata about a cluster of distributed systems
+		configuration information
+		health status
+		group membership
+	Hadoop, HBase, Mesos, solr, redis and neo4j using zookeeper
+	zookeeper itself as distributed system 
+			consisting of multiple nodes in an "ensemble"
+	ensemble - cluster for zookeeper
