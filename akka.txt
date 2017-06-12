@@ -1,0 +1,31 @@
+Akka
+
+Blocking model
+	Shared Mutable State
+		large no of stateful objects whose state can be changed by multiple parts of your application
+		solve this problem by preventing multiple threads from mutating data simultaneously
+		Blocking
+	
+Non Blocking concurrency model
+	Actor model
+	
+Concurrency Vs Parallelism
+	Concurrency is when two tasks may start, run and complete with overlapping time periods
+	(Multitasking on single core machine)
+	Parallelism is when tasks literally run at the same time (Multithreads on Multicore processor)
+
+Synchronous Vs Asynchronous
+	A method call is Synchronous if the caller cannot make progress until the method returns a value or throws an exception
+	
+	A method call is Asynchronous if the caller can make progress after a finite number of steps and the completion of the method
+	may be signaled via some additional mechanism (callback, future or message)
+	
+Actor model is Asynchronous in nature
+
+Non-Blocking Vs Blocking
+	Blocking is when if the delay of one thread can indefinitely delay some of the other threads 
+	Non-blocking means that no thread is able to indefinitely delay others
+
+Race condition
+	when multiples have a shared mutable stat, In fact, problems only arise if one or more of the threads try to change this state at the same time
+
