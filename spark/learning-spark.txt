@@ -3,6 +3,11 @@ Learning Spark - notes
 Spark
 General purpose framework for cluster computing
 
+A high level of parallelism is usually beneficial if you have the necessary resources and if the data is properly partitioned. 
+However, a very large number of tasks come with a scheduling overhead that should be avoided if it is not necessary. 
+In conclusion, the size of the files we are reading causes a proportional number of tasks to be launched and a significant scheduling overhead.
+
+
 Components
 
 - Spark Core
