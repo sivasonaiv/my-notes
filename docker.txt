@@ -1,0 +1,175 @@
+Linux Containers
+
+	Container Vs VMs
+	Kernel namespaces, cgroups, capabilities
+
+Docker Engine
+
+	Execution Driver: libcontainer vs LXC
+	AUFS, OverlayFS, Device Mapper
+	
+Docker images
+	docker build | docker images | docker inspect
+	union mounts, layering, Dockerfile
+
+Docker Containers
+	docker start|stop|restart
+	
+Registries, Volumes, Networking
+
+
+
+Hypervisior -> Virtual Machine Monitor (VMM)
+			is computer software, firmware or hardware that creates and runs Virtual
+			machines. A computer on which a Hypervisior runs one or more VMs is called a host Machine
+			and each virtual machine is called a guest machine
+			
+LXC -> Linux containers
+	is an operating system level virtualization method for running multiple isolated Linux
+	systems (containers) on a control host using a single linux kernel 
+	docker can also use LXC as one of its execution drivers, enabling image management and providing deployment services 
+			
+Containers are more light weight than VM
+	OS level Virtualization
+
+independent root file system for each container 
+each container having its own view of root file system
+each container isolated with each other
+they cant send signal to each other
+
+Containership could be done using below kernal features
+	kernel namespaces
+	cgroups
+	capabilities
+
+kernal namespaces used to provide this isolation in container
+pid namespaces
+net namespaces
+mnt namespaces
+user namespaces
+
+cgroups - control groups
+
+cgroup controls how much system resources(RAM, memory, etc) that container should use
+
+capabilities
+
+application portability is easy with container
+
+dotcloud beome Docker company
+
+docker is an internal project in dotCloud company lead by Solomon Hykes
+ written in Golang and licenced under Apache
+ 
+ 
+ Docker Engine
+ 		|
+ Operating System(namespaces, cgroups, capabilities)
+ 		|
+ Physical or Virtual Server
+ 
+ lib container - is part of Docker Engine which interacts with kernel and it provides cross platform nature
+ 
+ 192.168.56.102
+ 
+Docker modules
+
+Docker Engine
+Images
+Containers
+Registries and Repositories
+
+
+Docker Engine - Docker Daemon or Docker Runtime
+		cross platform infrastructure for container
+		standardised run time environment
+		provides portability to the containers
+		
+Docker Images 
+		Docker build time constructs
+Docker container
+		Docker Run time constructs
+				
+Registries
+	hub.docker.com - repo for images
+
+Layered of images
+	layers of more than one images
+	each layer has unique UUID
+	layer in higher layer hiding the lower level layers
+	union mounts - multiple file systems over top of each other - providing single view comprised of each other
+	image layering is accomplished through union mounts
+	top layer is read writable
+	Base layer also have bootfs - which loads first time container loads
+	To see the layers of images (in ubuntu)
+		ls -l /var/lib/docker/aufs/layers
+	
+Copying images across hosts
+
+Every container gets its own writable top layer
+Container runs as single process in the host
+	
+
+
+
+docker run -it fedora /bin/bash 
+			i-interactive
+			t-terminal
+	create container and run with fedora os
+
+docker run ubuntu:14.04
+	run the container with specific ubuntu version
+
+docker run --cpu-shares=256
+	run the container with cpu shares it can use
+
+docker run memory=2g
+	run the container with memory that it canuse
+
+docker run -d ubuntu:14:04.1 /bin/bash -c "ping 8.8.8.8"
+	run the container in detached mode and execute given commands
+
+docker inspect 866d5d63d98f
+	to see the detail information about container
+
+docker pull -a fedora 
+	pull all versions of fedora 
+
+docker images fedora 
+	list images of fedora
+	
+docker images --tree
+	to see hierarchy of layered images
+
+docker ps
+	to see the container running processes
+
+docker ps -a
+	to display all containers running in past
+
+docker top 2b8f2ac1ae96
+	to see the top running processes in the container
+
+docker commit 866d5d63d98f fridge
+	to commit the container as new image with the name as fridge
+
+docker history fridge
+	to see the commands used in the image
+
+docker save -o /tmp/fridge.tar fridge
+	to export container as tar file
+
+docker load -i /tmp/fridge.tar
+	to load the exported docker image into the host
+
+
+	
+
+
+
+
+ctrl+P+Q - close without killing container process
+
+
+
+
