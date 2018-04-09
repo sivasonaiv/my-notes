@@ -46,10 +46,22 @@ Is a running spark instance that connects to a cluster manage for resources
   * requestTotalExecutors
   * (private!) getExecutorIds
 
+##### RDD
+* simply an immutable distributed collection of objects. Each RDD is split into multiple partitions, which may be computed on different nodes of the cluster
+* RDDs offer two type of operations: transformations and actions
+  * Transformation construct a new RDD from a previous one
+  * Actions - compute a result based on RDD and either return it to the driver program or save it to an external storage systems (eg.HDFS)
+* Transformation returns RDD whereas actions return some other data type
+* RDDs are by default recomputed each time you run an action on them. If you want to reuse an RDD in multiple actions, you can ask Spark to persist it using RDD.persist(). After computing it the first time, Spark will store the RDD contents in memory (partitioned across the machines in your cluster), and reuse them in future actions
+* As you derive new RDDs from each other using transformations, Spark keeps track of the set of dependencies between different RDDs, called the lineage graph
+* RDDs also have a collect() funtion to retrieve the entire RDD. collect() shouldnt be used on large datasets
+
 ##### Spark Execution Model
-When you create SparkContext, each worker starts an executor. This is a separate process (JVM), and it loads your jar, too. The executors connect back to your driver program. Now the driver can send them commands, like flatMap, map and reduceByKey. When the driver quits, the executors shut down.
+When you create SparkContext, each worker starts an executor. This is a separate process (JVM), and it loads your jar, too. The executors connect back to your driver program. Now the driver can send them commands, like flatMap, map and reduceByKey. When the driver quits, the executors shut down. 
+
 A new process is not started for each step. A new process is started on each worker when the SparkContext is constructed.
 The executor deserializes the command (this is possible because it has loaded your jar), and executes it on a partition.
+
 Shortly speaking, an application in Spark is executed in three steps:
 Create RDD graph, i.e. DAG (directed acyclic graph) of RDDs to represent entire computation.
 Create stage graph, i.e. a DAG of stages that is a logical execution plan based on the RDD graph. Stages are created by breaking the RDD graph at shuffle boundaries.
