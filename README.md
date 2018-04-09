@@ -16,6 +16,7 @@ Is a running spark instance that connects to a cluster manage for resources
 * Splits a Spark application into tasks and schedules them to run on executors
 * Driver is where the task scheduler lives and spawns tasks across workers
 * Driver coordinates workers and overall execution of tasks
+* Driver access Spark through SparkContext object which represents a connection to computing cluster
 
 ##### Worker
 * Workers (aka slaves) are running Spark instances where executors live to execute tasks. They are the compute nodes in Spark.
@@ -44,6 +45,27 @@ Is a running spark instance that connects to a cluster manage for resources
   * killExecutors
   * requestTotalExecutors
   * (private!) getExecutorIds
+
+##### Spark Execution Model
+When you create SparkContext, each worker starts an executor. This is a separate process (JVM), and it loads your jar, too. The executors connect back to your driver program. Now the driver can send them commands, like flatMap, map and reduceByKey. When the driver quits, the executors shut down.
+A new process is not started for each step. A new process is started on each worker when the SparkContext is constructed.
+The executor deserializes the command (this is possible because it has loaded your jar), and executes it on a partition.
+Shortly speaking, an application in Spark is executed in three steps:
+Create RDD graph, i.e. DAG (directed acyclic graph) of RDDs to represent entire computation.
+Create stage graph, i.e. a DAG of stages that is a logical execution plan based on the RDD graph. Stages are created by breaking the RDD graph at shuffle boundaries.
+Based on the plan, schedule and execute tasks on workers.
+In the WordCount example, the RDD graph is as follows:
+file → lines → words → per-word count → global word count → output
+Based on this graph, two stages are created. The stage creation rule is based on the idea of pipelining as many narrow transformations as possible. RDD operations with "narrow" dependencies, like map() and filter(), are pipelined together into one set of tasks in each stage.
+In the end, every stage will only have shuffle dependencies on other stages, and may compute multiple operations inside it.
+In the WordCount example, the narrow transformation finishes at per-word count. Therefore, you get two stages:
+file → lines → words → per-word count
+global word count → output
+Once stages are defined, Spark will generate tasks from stages. The first stage will create ShuffleMapTasks with the last stage creating ResultTasks because in the last stage, one action operation is included to produce results.
+The number of tasks to be generated depends on how your files are distributed. Suppose that you have 3 three different files in three different nodes, the first stage will generate 3 tasks: one task per partition.
+Therefore, you should not map your steps to tasks directly. A task belongs to a stage, and is related to a partition.
+The number of tasks being generated in each stage will be equal to the number of partitions.
+
 
 ### Spark SQL
 ### Spark Streaming
