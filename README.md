@@ -18,6 +18,8 @@ Is a running spark instance that connects to a cluster manage for resources
 * Driver coordinates workers and overall execution of tasks
 
 ##### Worker
+* Workers (aka slaves) are running Spark instances where executors live to execute tasks. They are the compute nodes in Spark.
+* A worker receives serialized tasks that it runs in a thread pool.
 
 ##### Executor
 * Distributed agent responsible for executing tasks
