@@ -11,6 +11,6 @@
     - built in and third party libraries for connecting to Cassandara, HBase, Elasticsearch and JDBC databases
   ### File Formats
     
-    load and save data in a large number of file formats. Formats range from unstructured like text, to semistructured like JSON, to structured like SequenceFiles
+  Load and save data in a large number of file formats. Formats range from unstructured like text, to semistructured like JSON, to structured like SequenceFiles.
 
 ![Supported File Formats](ls05.jpeg)
