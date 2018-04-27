@@ -3,6 +3,7 @@ Kafka
 A high-throughput distributed messaging system 
 Designed to move data at high volumes
 
+Kafka provides two types of retention policy - time-based and size-based
 developed by Linkedin
 2011 - kafka open sourced in Apache
 
