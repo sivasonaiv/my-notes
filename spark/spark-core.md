@@ -56,7 +56,10 @@ Is a running spark instance that connects to a cluster manage for resources
 * RDDs are by default recomputed each time you run an action on them. If you want to reuse an RDD in multiple actions, you can ask Spark to persist it using RDD.persist(). After computing it the first time, Spark will store the RDD contents in memory (partitioned across the machines in your cluster), and reuse them in future actions
 * As you derive new RDDs from each other using transformations, Spark keeps track of the set of dependencies between different RDDs, called the lineage graph
 * RDDs also have a collect() funtion to retrieve the entire RDD. collect() shouldnt be used on large datasets
-
+* There are three ways to create RDD in Spark
+  * parallelize(<scala colleciton>) and makeRDD() method
+  * read data from external source - HDFS,S3, etc
+  * through transformation of another RDD
 ##### Spark Execution Model
 When you create SparkContext, each worker starts an executor. This is a separate process (JVM), and it loads your jar, too. The executors connect back to your driver program. Now the driver can send them commands, like flatMap, map and reduceByKey. When the driver quits, the executors shut down. 
 
