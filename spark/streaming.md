@@ -8,3 +8,12 @@
  high  throughput
  low latency
  out of order data
+
+declarative API than one record at a time - provides abstraction of bunch of data that can be recovered in case of failure and no need to maintain state of individual events
+
+event time Vs processing time
+  Event time is the idea of processing data based on timestamps inserted into each record at the source, as opposed to the time when the record is received at the streaming application (which is called processing time). 
+  
+  continuous Vs micro batch
+  continuous - one record at a time
+  micro-batch systems wait to accumulate small batches of input data (say, 500 ms’ worth), then process each batch in parallel using a distributed collection of tasks, similar to the execution of a batch job in Spark. Micro-batch systems can often achieve high throughput per node because they leverage the same optimizations as batch systems (e.g., vectorized processing), and do not incur any extra per-record overhead, 
