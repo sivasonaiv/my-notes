@@ -75,13 +75,13 @@ Watermarks are a feature of streaming systems that allow you to specify how late
 usually allow setting watermarks to limit how long they need to remember old data. Watermarks can also be used to control when to output a result for a particular event time window (e.g., waiting until the watermark for it has passed).
 
 Sample Streaming application 
-storing streaming data into in memory table and firing aggregation 
+storing streaming data into in memory table
 ```scala
 val streaming = spark.readStream.schema(dataSchema)
 .option("maxFilesPerTrigger", 1).json("/data/activity-data")
 val activityCounts = streaming.groupBy("gt").count()
 val activityQuery = activityCounts.writeStream.queryName("activity_counts")
-.format("memory").outputMode("complete") .start()
+.format("memory").outputMode("complete").start()
 activityQuery.awaitTermination()
 ```
 
