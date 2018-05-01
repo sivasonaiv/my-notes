@@ -17,3 +17,12 @@ event time Vs processing time
   continuous Vs micro batch
   continuous - one record at a time
   micro-batch systems wait to accumulate small batches of input data (say, 500 ms’ worth), then process each batch in parallel using a distributed collection of tasks, similar to the execution of a batch job in Spark. Micro-batch systems can often achieve high throughput per node because they leverage the same optimizations as batch systems (e.g., vectorized processing), and do not incur any extra per-record overhead, 
+
+Spark’s Streaming APIs -DStream API and structured streaming API
+
+Structured Streaming is also designed to make it easy to build end-to-end continuous applications using Apache Spark that combine streaming, batch, and interactive queries
+
+developers do not need to maintain a separate streaming version of their batch code
+
+Structured Streaming uses the existing structured APIs in Spark (DataFrames, Datasets, and SQL), meaning that all the operations you are familiar with there are supported. Users express a streaming computation in the same way they’d write a batch computation on static data
+
