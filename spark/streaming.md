@@ -92,3 +92,13 @@ awaitTermination() to prevent the driver process from exiting while the query is
 
 spark.streams.active - to see active streams running
 
+Input and output 
+
+file source and file sink
+
+The only difference between using the file source/sink and Spark’s static file source is that with streaming, we can control the number of files that we read in during each trigger via the maxFilesPerTrigger option that we saw earlier.
+
+Kafka source and Kafka sink
+
+maxOffsetsPerTrigger - The total number of offsets to read in a given trigger.
+
