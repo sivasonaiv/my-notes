@@ -8,6 +8,9 @@
  high  throughput
  low latency
  out of order data
+ 
+ 
+design approach 
 
 declarative API than one record at a time - provides abstraction of bunch of data that can be recovered in case of failure and no need to maintain state of individual events
 
