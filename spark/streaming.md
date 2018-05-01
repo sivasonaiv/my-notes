@@ -39,42 +39,42 @@ Transformation  and action -
 All transformations are available for streaming dataframe api
 only one action available in Structured Streaming: that of starting a stream, which will then run continuously and output results.
 
-Components 
-Input Sources - Spark 2.2, the supported input sources are as follows:
+**Components**
+**Input Sources** - Spark 2.2, the supported input sources are as follows:
  Apache Kafka 0.10
  Files on a distributed file system like HDFS or S3 (Spark will continuously read new files in a directory)
  A socket source for testing
 
-Output Sinks - supported output sinks as of Spark 2.2:
+**Output Sinks** - supported output sinks as of Spark 2.2:
 Apache Kafka 0.10
 Almost any file format
 A foreach sink for running arbitary computation on the output records
 A console sink for testing
 A memory sink for debugging
 
-Output modes - how we write data to sinks
+**Output modes** - how we write data to sinks
 supported output modes are as follows:
 Append (only add new records to the output sink)
 Update (update changed records in place)
 Complete (rewrite the full output)
 
 
-Triggers
+**Triggers**
 Whereas output modes define how data is output, triggers define when data is output—that is, when Structured Streaming should check for new input data and update its result.
 Spark also supports triggers based on processing time (only look for new data at a fixed interval).
 
-Event-Time Processing
+**Event-Time Processing**
 support for event-time processing (i.e., processing data based on timestamps included in the record that may arrive out of order)
 
-Event-time Data
+**Event-time Data**
 Event-time means time fields that are embedded in your data
 Expressing event-time processing is simple in Structured Streaming. Because the system views the input data as a table, the event time is just another field in that table, and your application can do grouping, aggregation, and windowing using standard SQL operators
 
-Watermark
+**Watermark**
 Watermarks are a feature of streaming systems that allow you to specify how late they expect to see data in event time.
 usually allow setting watermarks to limit how long they need to remember old data. Watermarks can also be used to control when to output a result for a particular event time window (e.g., waiting until the watermark for it has passed).
 
-Sample Streaming application 
+**Sample Streaming application**
 storing streaming data into in memory table
 ```scala
 val streaming = spark.readStream.schema(dataSchema)
