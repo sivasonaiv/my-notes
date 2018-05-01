@@ -23,7 +23,8 @@ event time Vs processing time
 
 Spark’s Streaming APIs -DStream API and structured streaming API
 
-Structured Streaming is also designed to make it easy to build end-to-end continuous applications using Apache Spark that combine streaming, batch, and interactive queries
+Structured Streaming is also designed to make it easy to build end-to-end continuous applications using Apache Spark that combine streaming, batch, and interactive queries. Single application for all these - batch, stream and interactive query
+
 
 developers do not need to maintain a separate streaming version of their batch code
 
