@@ -1,2 +1,6 @@
 
 https://stackoverflow.com/questions/48430366/where-is-my-sparkdf-persistdisk-only-data-stored
+
+
+
+https://www.slideshare.net/mobile/cloudera/top-5-mistakes-to-avoid-when-writing-apache-spark-applications
