@@ -75,4 +75,6 @@ Watermarks are a feature of streaming systems that allow you to specify how late
 usually allow setting watermarks to limit how long they need to remember old data. Watermarks can also be used to control when to output a result for a particular event time window (e.g., waiting until the watermark for it has passed).
 
 
+Structured Streaming does not let you perform schema inference without explicitly enabling it. You can enable schema inference for this by setting the configuration spark.sql.streaming.schemaInference to true. 
+
 
