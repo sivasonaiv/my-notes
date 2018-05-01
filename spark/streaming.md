@@ -105,3 +105,7 @@ maxOffsetsPerTrigger - The total number of offsets to read in a given trigger.
 Stream Testing
 
 socket source, console sink and memory sink - used for testing streaming application 
+```scala
+// in Scala import org.apache.spark.sql.functions.{window, col} 
+withEventTime.groupBy(window(col("event_time"), "10 minutes", "5 minutes")) .count() .writeStream .queryName("events_per_window") .format("memory") .outputMode("complete") .start()
+```
