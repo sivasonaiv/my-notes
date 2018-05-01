@@ -31,3 +31,5 @@ developers do not need to maintain a separate streaming version of their batch c
 Structured Streaming uses the existing structured APIs in Spark (DataFrames, Datasets, and SQL), meaning that all the operations you are familiar with there are supported. Users express a streaming computation in the same way they’d write a batch computation on static data
 
 These logical instructions for the computation are then executed using the same Catalyst engine, including query optimization, code generation, etc. 
+main idea behind Structured Streaming is to treat a stream of data as a table to which data is continuously appended. 
+
