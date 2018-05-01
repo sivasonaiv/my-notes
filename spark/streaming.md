@@ -39,9 +39,9 @@ Transformation  and action -
 All transformations are available for streaming dataframe api
 only one action available in Structured Streaming: that of starting a stream, which will then run continuously and output results.
 
-**Components**
-**Input Sources** - Spark 2.2, the supported input sources are as follows:
- Apache Kafka 0.10
+## Components 
+   * Input Sources - Spark 2.2, the supported input sources are as follows:
+     * Apache Kafka 0.10
  Files on a distributed file system like HDFS or S3 (Spark will continuously read new files in a directory)
  A socket source for testing
 
