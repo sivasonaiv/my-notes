@@ -102,3 +102,6 @@ Kafka source and Kafka sink
 
 maxOffsetsPerTrigger - The total number of offsets to read in a given trigger.
 
+Stream Testing
+
+socket source, console sink and memory sink - used for testing streaming application 
