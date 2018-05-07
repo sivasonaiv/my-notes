@@ -18,6 +18,22 @@ Think Scala
 	Scala is not just a nicer Java. You should learn it with a fresh mind- you will get more out of these classes.
 
 
+Arrows
+<-, -> and => are completely different things with completely different uses in Scala - it doesn't make a lot of sense to compare them.
+
+<- is used in for comprehensions. On the right side of the <- is a generator, which is an instance of a type with a foreach method, which generates the elements that the for is going to loop over. Note that the generator does not need to be a collection - anything that has a foreach method will work (it can for example be an Option).
+
+-> is a method that creates a tuple. This method is often used when creating a Map with a convenient, readable syntax. For example:
+
+val map = Map("one" -> 1, "two" -> 2, "three" -> 3)
+Note that "one" -> 1 is the same as ("one", 1) (a Tuple2 containing the values  "one" and 1), etc.
+
+=> is used in function literals and function types, it's the separator between the function's (or function type's) arguments and body (or return type).
+
+main()
+Scala doesn't have static like Java. Anything that you would make static in Java, you would put in an object instead of in a class in Scala.
+Since the main() method should be static, it must be defined in an object in Scala instead of in a class.
+Ofcourse you could create a main() method in a class, but you cannot use this as the entry point of an application - it would just be a regular method that happens to be named main.
 
 Anonymous Functions
 	You can create anonymous functions.
