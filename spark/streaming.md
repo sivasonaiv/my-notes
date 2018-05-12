@@ -109,3 +109,22 @@ socket source, console sink and memory sink - used for testing streaming applica
 // in Scala import org.apache.spark.sql.functions.{window, col} 
 withEventTime.groupBy(window(col("event_time"), "10 minutes", "5 minutes")) .count() .writeStream .queryName("events_per_window") .format("memory") .outputMode("complete") .start()
 ```
+
+Batch Interval Vs Sliding Window Interval
+
+Sometimes we need to know what happened in last n seconds every m seconds. 
+As a simple example, lets say batch interval is 10 seconds and we need to know what happened in last 60 seconds every 30 seconds.
+Here 60 seconds is called window length and 30 second slide interval. 
+Lets say first 6 batches are A,B,C,D,E,F which are part of first window. 
+After 30 seconds second window will ve formed which will have D,E,F,G,H,I. 
+As you can see 3 batches are common between first and second window.
+
+One thing to remember about window is that Spark holds onto the whole window in memory. 
+In first window it will combine RDD A to F using union operator to create one big RDD. 
+It is going to take 6 times memory and is ok if thats what you need. 
+In some cases though you may need to transfer some state batch to batch. 
+This can be accomplished using updateStateByKey.
+
+
+
+
