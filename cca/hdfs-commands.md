@@ -1,0 +1,5 @@
+![HDFS Commands -1](1.png)
+![HDFS Commands -2](2.png)
+![HDFS Commands -3](3.png)
+![HDFS Commands -4](4.png)
+![HDFS Commands -5](5.png)
