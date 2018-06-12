@@ -125,6 +125,17 @@ It is going to take 6 times memory and is ok if thats what you need.
 In some cases though you may need to transfer some state batch to batch. 
 This can be accomplished using updateStateByKey.
 
+Stream joins
+
+Define watermark delays on both inputs such that the engine knows how delayed the input can be (similar to streaming aggregations)
+
+Define a constraint on event-time across the two inputs such that the engine can figure out when old rows of one input is not going to be required (i.e. will not satisfy the time constraint) for matches with the other input. This constraint can be defined in one of the two ways.
+
+Time range join conditions (e.g. ...JOIN ON leftTime BETWEN rightTime AND rightTime + INTERVAL 1 HOUR),
+
+Join on event-time windows (e.g. ...JOIN ON leftTimeWindow = rightTimeWindow).
+
+
 
 
 
